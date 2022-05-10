@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bezkoder.spring.jdbc.postgresql.model.Tutorial;
 import com.bezkoder.spring.jdbc.postgresql.repository.TutorialRepository;
+import com.bezkoder.spring.jdbc.postgresql.service.TutorialService;
 
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
@@ -28,13 +29,15 @@ public class TutorialController {
   @Autowired
   TutorialRepository tutorialRepository;
 
+  @Autowired
+  TutorialService tutorialService;
+
   @GetMapping("/tutorials")
   public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {
     try {
       List<Tutorial> tutorials = new ArrayList<Tutorial>();
-
       if (title == null)
-        tutorialRepository.findAll().forEach(tutorials::add);
+        tutorialService.getTutorial().forEach(tutorials::add);
       else
         tutorialRepository.findByTitleContaining(title).forEach(tutorials::add);
 

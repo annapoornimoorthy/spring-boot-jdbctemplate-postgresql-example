@@ -2,6 +2,7 @@ package com.bezkoder.spring.jdbc.postgresql.repository;
 
 import java.util.List;
 
+import javax.cache.annotation.CacheResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -45,8 +46,21 @@ public class JdbcTutorialRepository implements TutorialRepository {
     return jdbcTemplate.update("DELETE FROM tutorials WHERE id=?", id);
   }
 
+
+  public void test() {
+
+  }
   @Override
+
   public List<Tutorial> findAll() {
+    test();
+    System.out.println("------------------From repository");
+    try {
+      Thread.sleep(3000);
+    } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new RuntimeException(e);
+    }
     return jdbcTemplate.query("SELECT * from tutorials", BeanPropertyRowMapper.newInstance(Tutorial.class));
   }
 

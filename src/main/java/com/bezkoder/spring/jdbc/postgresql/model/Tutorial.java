@@ -1,6 +1,8 @@
 package com.bezkoder.spring.jdbc.postgresql.model;
 
-public class Tutorial {
+import java.io.Serializable;
+
+public class Tutorial implements Serializable {
 
   private long id;
   private String title;
