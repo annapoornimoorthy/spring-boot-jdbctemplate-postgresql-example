@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.cache.annotation.CacheResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import javax.cache.annotation.CacheRemove;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

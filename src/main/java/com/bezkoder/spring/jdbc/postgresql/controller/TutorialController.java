@@ -92,7 +92,7 @@ public class TutorialController {
   @DeleteMapping("/tutorials/{id}")
   public ResponseEntity<String> deleteTutorial(@PathVariable("id") long id) {
     try {
-      int result = tutorialRepository.deleteById(id);
+      int result = tutorialService.deleteById(id);
       if (result == 0) {
         return new ResponseEntity<>("Cannot find Tutorial with id=" + id, HttpStatus.OK);
       }
